@@ -12,8 +12,11 @@
 # k=k%len(list)
 # print(k)
 # list_res = []
-# for i in range(k):
-#   list_res.append(list[len(list)-1-i])
+# # for i in range(k):
+# #   list_res.append(list[len(list)-1-i])
+# # print(list_res)
+# for i in range(k,0,-1):
+#   list_res.append(list[len(list)-i])
 # print(list_res)
 # for j in range(len(list)-k):
 #   list_res.append(list[j])
@@ -39,9 +42,9 @@
 # Output: 2 (-1 < 5, 2 < 3) 
 # Примечание: Пользователь может вводить значения списка или список задан изначально.
 # мое решение:
-ar=[0, -1, 5, 2, 3]
-kol=0
-for i in range(1,len(ar)):
-  if ar[i-1] < ar[i]:
-    kol=kol+1
-print(f"кол. элем больих предыдущих = {kol} в массиве {ar}")
+# ar=[0, -1, 5, 2, 3]
+# kol=0
+# for i in range(1,len(ar)):
+#   if ar[i-1] < ar[i]:
+#     kol=kol+1
+# print(f"кол. элем больих предыдущих = {kol} в массиве {ar}")
