@@ -24,37 +24,60 @@
 #     1 : ['З', 'д', 'е', 'ь', 'ч', '-', 'п', 'и'] 
 #     2 : ['с', ' ', 'т', 'н', 'а'] 
 #     3 : ['о']
-#Функциядлясозданиясловарячастотсимволов 
-def histogram(string): 
-  sym_dict=dict() #Инициализируемпустойсловарьдлячастот 
-  for sym in string: #Еслисимволужеестьвсловаре,увеличиваемегочастоту
-    if sym in sym_dict: 
-      sym_dict[sym]+=1 
-    else: #Еслисимволанетвсловаре,добавляемегосчастотой1 
-      sym_dict[sym]=1 
-  return sym_dict 
-#Функциядляинвертированиясловарячастот 
-def invert_dict(d): 
-  inv=dict() #Инициализируемпустойсловарьдля инвертированныхданных 
-  for key in d: 
-    val=d[key] #Есличастотаещеневстречалась,создаемновыйсписок 
-    if val not in inv:
-      inv[val]=[key] 
-    else: 
-      #Есличастотаужеестьвсловаре,добавляемсимволв существующийсписок 
-      inv[val].append(key) 
-  return inv
-#Запрашиваемтекступользователя 
-text=input('Введитетекст:') 
-#Создаемсловарьчастот 
-hist=histogram(text) 
-#Выводиморигинальныйсловарьчастот 
-print('Оригинальныйсловарьчастот:') 
-for i_sym in sorted(hist.keys()): 
-  print(i_sym,':',hist[i_sym]) 
-#Создаеминвертированныйсловарьчастот 
-inv_hist=invert_dict(hist) 
-#Выводиминвертированныйсловарьчастот 
-print('\nИнвертированныйсловарьчастот:') 
-for i_sym in sorted(inv_hist.keys()): 
-  print(i_sym,':',inv_hist[i_sym])
+
+# Мой вариант решения
+ishText = input("Введите текст: ").lower()
+print(ishText)
+strTxt = dict(); invslov=dict()
+for st in ishText:
+  strTxt[st]=strTxt.get(st,0)+1
+# print(strTxt)
+for key,zn in strTxt.items(): 
+  if zn not in invslov:
+    invslov[zn]=[key] 
+  else: 
+    invslov[zn].append(key) 
+print(" Оригинальный словарь частот: ")    
+for ke,zn in sorted(strTxt.items()):
+    print(f"{ke} : {zn}" )
+print("Инвертированный словарь частот: ")
+for key,zn in sorted(invslov.items()):
+  print(f"{key} : {zn}" )
+
+
+
+# # # # # Эталонное решение
+# #Функциядлясозданиясловарячастотсимволов 
+# def histogram(string): 
+#   sym_dict=dict() #Инициализируемпустойсловарьдлячастот 
+#   for sym in string: #Еслисимволужеестьвсловаре,увеличиваемегочастоту
+#     if sym in sym_dict: 
+#       sym_dict[sym]+=1 
+#     else: #Еслисимволанетвсловаре,добавляемегосчастотой1 
+#       sym_dict[sym]=1 
+#   return sym_dict 
+# #Функциядляинвертированиясловарячастот 
+# def invert_dict(d): 
+#   inv=dict() #Инициализируемпустойсловарьдля инвертированныхданных 
+#   for key in d: 
+#     val=d[key] #Есличастотаещеневстречалась,создаемновыйсписок 
+#     if val not in inv:
+#       inv[val]=[key] 
+#     else: 
+#       #Есличастотаужеестьвсловаре,добавляемсимволв существующийсписок 
+#       inv[val].append(key) 
+#   return inv
+# #Запрашиваемтекступользователя 
+# text=input('Введитетекст:') 
+# #Создаемсловарьчастот 
+# hist=histogram(text) 
+# #Выводиморигинальныйсловарьчастот 
+# print('Оригинальныйсловарьчастот:') 
+# for i_sym in sorted(hist.keys()): 
+#   print(i_sym,':',hist[i_sym]) 
+# #Создаеминвертированныйсловарьчастот 
+# inv_hist=invert_dict(hist) 
+# #Выводиминвертированныйсловарьчастот 
+# print('\nИнвертированныйсловарьчастот:') 
+# for i_sym in sorted(inv_hist.keys()): 
+#   print(i_sym,':',inv_hist[i_sym])
